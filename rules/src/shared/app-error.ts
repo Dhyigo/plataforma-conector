@@ -1,0 +1,13 @@
+interface AppErrorProps {
+  message: string
+  statusCode: number
+}
+
+export class AppError extends Error {
+  readonly statusCode: number
+
+  constructor(props: AppErrorProps) {
+    super(props.message)
+    this.statusCode = props.statusCode
+  }
+}
