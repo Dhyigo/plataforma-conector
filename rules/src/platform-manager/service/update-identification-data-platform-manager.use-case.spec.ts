@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { describe, expect, it } from 'vitest'
 import { CreatePlatformManager } from './create-platform-manager.use-case'
-import { InMemoryPlatformManagerRepository } from '../../mock/in-memory-platform-manager'
-import { BcryptPasswordService } from '../../mock/bcrypt-password-service'
+import { InMemoryPlatformManagerRepository } from '../../utils/repository/in-memory-platform-manager'
+import { BcryptPasswordService } from '../../utils/service/bcrypt-password-service'
 import { UpdateIdentificationDataPlatformManager } from './update-identification-data-platform-manager.use-case'
-import { AppError } from '../../shared/app-error'
-import { PlatformManager } from '../model/platform-manager.entities'
+import { AppError } from '../../shared/error/app-error'
+import { makePlatformManager } from '../../utils/factorie/make-platform-manager'
 
 describe('Use case - update identification data platform manager', () => {
   it('should be able to update a identification data', async () => {
@@ -36,18 +36,14 @@ describe('Use case - update identification data platform manager', () => {
       newName,
     })
 
-    expect(inMemoryRepository.platformManagers[0].name.value).toEqual(newName)
-    expect(inMemoryRepository.platformManagers[0].email.value).toEqual(newEmail)
+    expect(inMemoryRepository.platformManagers[0].name).toEqual(newName)
+    expect(inMemoryRepository.platformManagers[0].email).toEqual(newEmail)
   })
 
   it('should not be able to update identification data for a manager that does not exist', async () => {
     const inMemoryRepository = new InMemoryPlatformManagerRepository()
 
-    const platformManager = new PlatformManager({
-      name: 'name example',
-      email: 'test@test.test',
-      password: '12345',
-    })
+    const platformManager = makePlatformManager()
 
     const updateIdentification = new UpdateIdentificationDataPlatformManager(
       inMemoryRepository

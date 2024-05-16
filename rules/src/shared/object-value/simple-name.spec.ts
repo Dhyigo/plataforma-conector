@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { SimpleName } from './simple-name.value-object'
-import { AppError } from '../app-error'
+import { AppError } from '../error/app-error'
 
 describe('Value object = Simple name', () => {
   it('should be able to create a simple name', () => {

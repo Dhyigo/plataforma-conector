@@ -1,5 +1,5 @@
 import { StatusCodes } from 'http-status-codes'
-import { AppError } from '../../shared/app-error'
+import { AppError } from '../../shared/error/app-error'
 import { PasswordServices } from '../../shared/interface/password-services'
 import { PlatformManagerRepository } from '../provider/platform-manager-repository'
 import { PlatformManager } from '../model/platform-manager.entities'

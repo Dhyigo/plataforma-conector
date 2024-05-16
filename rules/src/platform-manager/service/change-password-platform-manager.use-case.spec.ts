@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { describe, expect, it } from 'vitest'
 import { CreatePlatformManager } from './create-platform-manager.use-case'
-import { InMemoryPlatformManagerRepository } from '../../mock/in-memory-platform-manager'
-import { BcryptPasswordService } from '../../mock/bcrypt-password-service'
+import { InMemoryPlatformManagerRepository } from '../../utils/repository/in-memory-platform-manager'
+import { BcryptPasswordService } from '../../utils/service/bcrypt-password-service'
 import { ChangePasswordPlatformManager } from './change-password-platform-manager.use-case'
-import { PlatformManager } from '../model/platform-manager.entities'
-import { AppError } from '../../shared/app-error'
+import { AppError } from '../../shared/error/app-error'
+import { makePlatformManager } from '../../utils/factorie/make-platform-manager'
 
 describe('Use case - Change password platform manager', () => {
   it('should be able to create a Platform manager', async () => {
@@ -35,7 +35,7 @@ describe('Use case - Change password platform manager', () => {
       platformManagerId: platformManager.id,
     })
 
-    const passwordHash = inMemoryRepository.platformManagers[0].props.password
+    const passwordHash = inMemoryRepository.platformManagers[0].password
 
     const match = await bcryptPassword.compareHash(newPassword, passwordHash)
     expect(match).toBeTruthy()
@@ -45,11 +45,7 @@ describe('Use case - Change password platform manager', () => {
     const inMemoryRepository = new InMemoryPlatformManagerRepository()
     const bcryptPassword = new BcryptPasswordService()
 
-    const platformManager = new PlatformManager({
-      name: 'name example',
-      email: 'test@test.test',
-      password: '12345',
-    })
+    const platformManager = makePlatformManager()
 
     const changePasswordPlatformManager = new ChangePasswordPlatformManager(
       inMemoryRepository,

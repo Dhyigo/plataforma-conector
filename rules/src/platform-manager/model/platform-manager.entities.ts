@@ -4,29 +4,22 @@ import { Entities } from '../../shared/interface/entities'
 import { SimpleName } from '../../shared/object-value/simple-name.value-object'
 
 export interface PlatformManagerProps {
-  name: string
-  email: string
+  name: SimpleName
+  email: Email
   password: string
   createdAt: Date
   updatedAt: Date
 }
 
+type IPlatformManagerProps = Replace<
+  PlatformManagerProps,
+  { createdAt?: Date; updatedAt?: Date }
+>
 export class PlatformManager extends Entities {
   private _props: PlatformManagerProps
-  private _name: SimpleName
-  private _email: Email
 
-  constructor(
-    props: Replace<
-      PlatformManagerProps,
-      { createdAt?: Date; updatedAt?: Date }
-    >,
-    id?: string
-  ) {
+  constructor(props: IPlatformManagerProps, id?: string) {
     super(id)
-    this._name = new SimpleName(props.name)
-    this._email = new Email(props.email)
-
     this._props = {
       ...props,
       createdAt: props.createdAt ?? new Date(),
@@ -34,30 +27,33 @@ export class PlatformManager extends Entities {
     }
   }
 
-  get props(): PlatformManagerProps {
-    return this._props
-  }
-
   changePassword(password: string): void {
     this._props.password = password
-    this.setUpdateAt()
+    this.update()
   }
 
-  changeIdentificationData(name: string, email: string): void {
-    this._name = new SimpleName(name)
-    this._email = new Email(email)
+  changeIdentificationData(data: { name: SimpleName; email: Email }): void {
+    const { name, email } = data
 
-    this._props = { ...this.props, name, email }
+    this._props = {
+      ...this._props,
+      name,
+      email,
+    }
 
-    this.setUpdateAt()
+    this.update()
   }
 
-  get name(): SimpleName {
-    return this._name
+  get name(): string {
+    return this._props.name.value
   }
 
-  get email(): Email {
-    return this._email
+  get email(): string {
+    return this._props.email.value
+  }
+
+  get password(): string {
+    return this._props.password
   }
 
   get createdAt(): Date {
@@ -68,7 +64,7 @@ export class PlatformManager extends Entities {
     return this._props.updatedAt
   }
 
-  private setUpdateAt(): void {
+  private update(): void {
     this._props.updatedAt = new Date()
   }
 }

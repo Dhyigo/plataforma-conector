@@ -1,5 +1,5 @@
-import { PlatformManager } from '../platform-manager/model/platform-manager.entities'
-import { PlatformManagerRepository } from '../platform-manager/provider/platform-manager-repository'
+import { PlatformManager } from '../../platform-manager/model/platform-manager.entities'
+import { PlatformManagerRepository } from '../../platform-manager/provider/platform-manager-repository'
 
 export class InMemoryPlatformManagerRepository
   implements PlatformManagerRepository

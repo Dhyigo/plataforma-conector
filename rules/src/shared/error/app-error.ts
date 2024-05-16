@@ -1,6 +1,8 @@
+import { StatusCodes } from 'http-status-codes'
+
 interface AppErrorProps {
   message: string
-  statusCode: number
+  statusCode: StatusCodes
 }
 
 export class AppError extends Error {

@@ -1,5 +1,5 @@
 import { isEmail } from 'validator'
-import { AppError } from '../app-error'
+import { AppError } from '../error/app-error'
 import { StatusCodes } from 'http-status-codes'
 export class Email {
   private readonly _email: string

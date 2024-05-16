@@ -1,8 +1,10 @@
 import { StatusCodes } from 'http-status-codes'
-import { AppError } from '../../shared/app-error'
+import { AppError } from '../../shared/error/app-error'
 import { UseCase } from '../../shared/interface/use-case'
 import { PlatformManager } from '../model/platform-manager.entities'
 import { PlatformManagerRepository } from '../provider/platform-manager-repository'
+import { Email } from '../../shared/object-value/email.object-value'
+import { SimpleName } from '../../shared/object-value/simple-name.value-object'
 
 interface UpdateIdentificationDataRequest {
   platformManagerId: string
@@ -31,7 +33,10 @@ export class UpdateIdentificationDataPlatformManager implements UseCase {
       })
     }
 
-    platformManager.changeIdentificationData(newName, newEmail)
+    platformManager.changeIdentificationData({
+      name: new SimpleName(newName),
+      email: new Email(newEmail),
+    })
 
     await this.repo.update(platformManager)
 

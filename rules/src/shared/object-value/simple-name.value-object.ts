@@ -1,6 +1,6 @@
 import {} from 'validator'
 import { StatusCodes } from 'http-status-codes'
-import { AppError } from '../app-error'
+import { AppError } from '../error/app-error'
 
 interface SimpleNameConfig {
   min?: number

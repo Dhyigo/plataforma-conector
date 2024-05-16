@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { CreatePlatformManager } from './create-platform-manager.use-case'
-import { InMemoryPlatformManagerRepository } from '../../mock/in-memory-platform-manager'
-import { BcryptPasswordService } from '../../mock/bcrypt-password-service'
+import { InMemoryPlatformManagerRepository } from '../../utils/repository/in-memory-platform-manager'
+import { BcryptPasswordService } from '../../utils/service/bcrypt-password-service'
 import { PlatformManager } from '../model/platform-manager.entities'
 
 describe('Use case - Create platform manager', () => {

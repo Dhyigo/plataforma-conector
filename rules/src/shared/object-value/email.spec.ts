@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { Email } from './email.object-value'
-import { AppError } from '../app-error'
+import { AppError } from '../error/app-error'
 
 describe('Value object - Email', () => {
   it('should be create an Email', () => {

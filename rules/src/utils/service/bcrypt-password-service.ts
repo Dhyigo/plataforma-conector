@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt'
 
-import { PasswordServices } from '../shared/interface/password-services'
+import { PasswordServices } from '../../shared/interface/password-services'
 
 export class BcryptPasswordService implements PasswordServices {
   async hash(password: string): Promise<string> {
