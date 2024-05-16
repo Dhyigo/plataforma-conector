@@ -12,9 +12,9 @@ export interface PlatformManagerProps {
 }
 
 export class PlatformManager extends Entities {
-  private readonly _props: PlatformManagerProps
-  readonly name: SimpleName
-  readonly email: Email
+  private _props: PlatformManagerProps
+  private _name: SimpleName
+  private _email: Email
 
   constructor(
     props: Replace<
@@ -24,8 +24,8 @@ export class PlatformManager extends Entities {
     id?: string
   ) {
     super(id)
-    this.name = new SimpleName(props.name)
-    this.email = new Email(props.email)
+    this._name = new SimpleName(props.name)
+    this._email = new Email(props.email)
 
     this._props = {
       ...props,
@@ -41,6 +41,23 @@ export class PlatformManager extends Entities {
   changePassword(password: string): void {
     this._props.password = password
     this.setUpdateAt()
+  }
+
+  changeIdentificationData(name: string, email: string): void {
+    this._name = new SimpleName(name)
+    this._email = new Email(email)
+
+    this._props = { ...this.props, name, email }
+
+    this.setUpdateAt()
+  }
+
+  get name(): SimpleName {
+    return this._name
+  }
+
+  get email(): Email {
+    return this._email
   }
 
   get createdAt(): Date {

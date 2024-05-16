@@ -21,8 +21,11 @@ export class InMemoryPlatformManagerRepository
     const index = this.platformManagers.findIndex(
       ({ id }) => id === platformManager.id
     )
+
     if (index === -1) {
       throw new Error('PlatformManager not found')
     }
+
+    this.platformManagers.splice(index, 1, platformManager)
   }
 }
