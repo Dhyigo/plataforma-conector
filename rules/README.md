@@ -1,32 +1,28 @@
 # Projeto Plataforma Conector Blip x Genesys
+
 ## Gerente da plataforma
 ### Entidade
 - id
 - nome
-- email ( Único por entidade )
+- email (único por entidade)
 - senha
+- data de criação
+- data de atualização
 
 ### Casos de uso
-[ ] Criar Empresa
-  - **Permissões**
-    - Gerente
+- [x] Atualizar dados do Gerente
+  - **Permissões**: Gerente
+- [x] Trocar senha
+  - **Permissões**: Gerente
 
-[ ] Atualizar dados do Gerente
-- **Permissões**
-  - Gerente
-
-[ ] Trocar senha
-- **Permissões**
-  - Gerente
-
-## Empresa(Cliente)
+## Empresa (Cliente)
 ### Entidade
-- id ( Único por entidade )
-- nome ( Único por entidade )
+- id (único por entidade)
+- nome (único por entidade)
 - email
 - senha
-- CNPJ ( Único por entidade )
-- org ( Único por entidade )
+- CNPJ (único por entidade)
+- org (único por entidade)
 - dados de cobrança bancária
   - agência
   - número da conta
@@ -35,105 +31,62 @@
 - data de atualização
 
 ### Casos de uso
-[ ] Criar Empresa
-  - **Permissões**
-    - Empresa
-
-[ ] Atualizar dados do Empresa
-- **Permissões**
-  - Empresa
-
-[ ] Trocar senha
-- **Permissões**
-  - Empresa
-
+- [ ] Criar Empresa
+  - **Permissões**: Empresa
+- [ ] Atualizar dados da Empresa
+  - **Permissões**: Empresa
+- [ ] Trocar senha
+  - **Permissões**: Empresa
 
 ## Admin
 ### Entidade
 - nome
-- email ( Único por entidade )
+- email (único por entidade)
 - senha
-- telefone ( Único por entidade )
-- cpf ( Único por entidade )
+- telefone (único por entidade)
+- CPF (único por entidade)
 - empresaId 
 - org
 - data de criação
 - data de atualização
 
 ### Casos de uso
-[ ] Criar Admin
-- **Permissões**
-  - Empresa
-
-[ ] Editar Admin
-- **Permissões**
-  - Empresa
-
-[ ] Apagar Admin
-- **Permissões**
-  - Empresa
-
-[ ] Listar Admins por empresa
-- **Permissões**
-  - Empresa
-
-[ ] Trocar senha
-- **Permissões**
-  - Admin
+- [ ] Criar Admin
+  - **Permissões**: Empresa
+- [ ] Editar Admin
+  - **Permissões**: Empresa
+- [ ] Apagar Admin
+  - **Permissões**: Empresa
+- [ ] Listar Admins por empresa
+  - **Permissões**: Empresa
+- [ ] Trocar senha
+  - **Permissões**: Admin
 
 ## Integração
 ...
- -desconto
+- desconto
 
 ### Casos de uso
-[ ] Criar integração no conector
-- **Permissões**
-  - Empresa
-  - Admin
-
-[ ] Criar novo token de integração
-- **Permissões**
-  - Empresa
-  - Admin
-
-[ ] Alteração de plano
-- **Permissões**
-  - Empresa
-
-[ ] Atualizar dados da integração no conector
-- **Permissões**
-  - Empresa
-
-[ ] Adicionar novo bot na integração
-- **Permissões**
-  - Empresa
-  - Admin
-
-[ ] Atualizar dados do bot na integração
-- **Permissões**
-  - Empresa
-  - Admin
-
-[ ] Cadastrar novo router na integração
-- **Permissões**
-  - Empresa
-  - Admin
-
-[ ] Atualizar dados do router na integração
-- **Permissões**
-  - Empresa
-  - Admin
-
-[ ] Deletar bot router
-- **Permissões**
-  - Empresa
-  - Admin
-
-[ ] Deletar bot
-- **Permissões**
-  - Empresa
-  - Admin
-
+- [ ] Criar integração no conector
+  - **Permissões**: Empresa, Admin
+- [ ] Criar novo token de integração
+  - **Permissões**: Empresa, Admin
+- [ ] Alteração de plano
+  - **Permissões**: Empresa
+- [ ] Atualizar dados da integração no conector
+  - **Permissões**: Empresa
+- [ ] Adicionar novo bot na integração
+  - **Permissões**: Empresa, Admin
+- [ ] Atualizar dados do bot na integração
+  - **Permissões**: Empresa, Admin
+- [ ] Cadastrar novo router na integração
+  - **Permissões**: Empresa, Admin
+- [ ] Atualizar dados do router na integração
+  - **Permissões**: Empresa, Admin
+- [ ] Deletar bot router
+  - **Permissões**: Empresa, Admin
+- [ ] Deletar bot
+  - **Permissões**: Empresa, Admin
 
 ## Plano
 ### Entidade
@@ -146,13 +99,13 @@
 
 ### Casos de uso
 - [ ] Criar Plano
-  - **Permissões**: Admin
+  - **Permissões**: Gerente
 - [ ] Editar Plano
-  - **Permissões**: Admin
+  - **Permissões**: Gerente
 - [ ] Apagar Plano
-  - **Permissões**: Admin
+  - **Permissões**: Gerente
 - [ ] Listar Planos
-  - **Permissões**: Admin
+  - **Permissões**: Gerente
 
 ## Mensagem trafegada
 ### Entidade
@@ -166,13 +119,7 @@
 - ID da mensagem no GENESYS
 
 ### Casos de uso
-[ ] Consultar quantidade de mensagem por data
-- **Permissões**
-  - Empresa
-  - Admin
-
-[ ] Buscar Mensagem em um período de tempo
-- **Permissões**
-  - Empresa
-  - Admin
-  
+- [ ] Consultar quantidade de mensagem por data
+  - **Permissões**: Empresa, Admin
+- [ ] Buscar Mensagem em um período de tempo
+  - **Permissões**: Empresa, Admin
