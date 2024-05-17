@@ -34,11 +34,11 @@ export class CNPJ {
       return false
     }
 
-    let registration = cleaned.substr(0, 12)
+    let registration = cleaned.slice(0, 12)
     registration += CNPJ.digit(registration)
     registration += CNPJ.digit(registration)
 
-    return registration.substr(-2) === cleaned.substr(-2)
+    return registration.slice(-2) === cleaned.slice(-2)
   }
 
   /**
