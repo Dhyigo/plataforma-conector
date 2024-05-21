@@ -54,9 +54,22 @@ describe('Entities - Company', () => {
       agency: new TextNumeric('11111111111', 'agencia'),
     })
 
-    company.addPaymentData(bankData)
+    company.setPaymentData(bankData)
 
     expect(company.bankData).instanceOf(BankData)
     expect(company.bankData?.agency).toBe(bankData.agency)
+  })
+
+  it('should be able to remove payment data', () => {
+    const company = makeCompany()
+
+    const bankData = makeBankData({
+      agency: new TextNumeric('11111111111', 'agencia'),
+    })
+
+    company.setPaymentData(bankData)
+    company.setPaymentData(null)
+
+    expect(company.bankData).toBeNull()
   })
 })
