@@ -1,11 +1,12 @@
 import { Entities } from '../../shared/interface/entities'
 import { SimpleName } from '../../shared/object-value/simple-name.value-object'
+import { TextNumeric } from '../../shared/object-value/text-numeric.value-object'
 
 export interface BankDataProps {
   name: SimpleName
-  agency: string
-  accountNumber: string
   typeAccount: SimpleName
+  agency: TextNumeric
+  accountNumber: TextNumeric
 }
 
 export class BankData extends Entities {
@@ -21,11 +22,11 @@ export class BankData extends Entities {
   }
 
   get agency(): string {
-    return this._props.agency
+    return this._props.agency.value
   }
 
   get accountNumber(): string {
-    return this._props.accountNumber
+    return this._props.accountNumber.value
   }
 
   get typeAccount(): string {

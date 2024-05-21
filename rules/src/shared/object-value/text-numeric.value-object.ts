@@ -6,9 +6,7 @@ export class TextNumeric {
   private readonly _value: string
 
   constructor(value: string, field: string) {
-    value = value?.replace(/\D/g, '')
-
-    const notIsNumeric = isNumeric(value)
+    const notIsNumeric = !isNumeric(value)
 
     if (notIsNumeric) {
       throw new AppError({

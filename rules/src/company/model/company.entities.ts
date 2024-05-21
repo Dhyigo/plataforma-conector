@@ -10,7 +10,7 @@ export interface CompanyProps {
   email: Email
   cnpj: Cnpj
   org: SimpleName
-  bankDatas: BankData[] | null
+  bankData: BankData | null
   password: string
   createdAt: Date
   updatedAt: Date
@@ -25,7 +25,7 @@ interface ChangeIdentificationData {
 
 type ICompanyProps = Replace<
   CompanyProps,
-  { createdAt?: Date; updatedAt?: Date; bankDatas?: BankData[] | null }
+  { createdAt?: Date; updatedAt?: Date; bankData?: BankData | null }
 >
 export class Company extends Entities {
   private _props: CompanyProps
@@ -34,7 +34,7 @@ export class Company extends Entities {
     super(id)
     this._props = {
       ...props,
-      bankDatas: props.bankDatas ?? null,
+      bankData: props.bankData ?? null,
       createdAt: props.createdAt ?? new Date(),
       updatedAt: props.updatedAt ?? new Date(),
     }
@@ -59,8 +59,12 @@ export class Company extends Entities {
     this.update()
   }
 
-  updatePaymentDatas(bankDatas: BankData[]): void {
-    this._props.bankDatas = bankDatas
+  addPaymentData(bankDatas: BankData): void {
+    this._props.bankData = bankDatas
+  }
+
+  removePaymentData(): void {
+    this._props.bankData = null
   }
 
   get name(): string {
@@ -79,8 +83,8 @@ export class Company extends Entities {
     return this._props.org.value
   }
 
-  get bankDatas(): BankData[] | null {
-    return this._props.bankDatas
+  get bankData(): BankData | null {
+    return this._props.bankData
   }
 
   get password(): string {
