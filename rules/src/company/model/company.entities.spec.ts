@@ -5,6 +5,8 @@ import { makeCompany } from '../../utils/factories/make-company'
 import { Company } from './company.entities'
 import { Cnpj } from './cnpj.value-object'
 import { makeBankData } from '../../utils/factories/make-bank-data'
+import { BankData } from './bank-data.entities'
+import { TextNumeric } from '../../shared/object-value/text-numeric.value-object'
 
 describe('Entities - Company', () => {
   it('should be able to create a Company', () => {
@@ -48,12 +50,13 @@ describe('Entities - Company', () => {
   it('should be able to update payment data', () => {
     const company = makeCompany()
 
-    company.updatePaymentDatas([])
-    expect(company.bankDatas).toHaveLength(0)
+    const bankData = makeBankData({
+      agency: new TextNumeric('11111111111', 'agencia'),
+    })
 
-    const bankData = makeBankData({ agency: '1111' })
-    company.updatePaymentDatas([bankData])
+    company.addPaymentData(bankData)
 
-    expect(company.bankDatas[0].agency).toBe(bankData.agency)
+    expect(company.bankData).instanceOf(BankData)
+    expect(company.bankData?.agency).toBe(bankData.agency)
   })
 })
