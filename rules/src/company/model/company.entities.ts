@@ -59,7 +59,7 @@ export class Company extends Entities {
     this.update()
   }
 
-  addPaymentData(bankDatas: BankData): void {
+  setPaymentData(bankDatas: BankData | null): void {
     this._props.bankData = bankDatas
   }
 

@@ -37,7 +37,7 @@ export class AddPaymentDataCompany implements UseCase {
       agency: new TextNumeric(agency, 'Número da agencia'),
     })
 
-    company.addPaymentData(bankData)
+    company.setPaymentData(bankData)
 
     await this.repo.save(company)
 
