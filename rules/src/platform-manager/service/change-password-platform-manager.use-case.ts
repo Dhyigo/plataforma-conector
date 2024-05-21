@@ -33,7 +33,10 @@ export class ChangePasswordPlatformManager implements UseCase {
       })
     }
     const password = await this.passwordService.hash(newPassword)
+
     platformManager.changePassword(password)
+
+    await this.repo.save(platformManager)
 
     return {
       platformManager,

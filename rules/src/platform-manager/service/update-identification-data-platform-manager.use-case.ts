@@ -38,7 +38,7 @@ export class UpdateIdentificationDataPlatformManager implements UseCase {
       email: new Email(newEmail),
     })
 
-    await this.repo.update(platformManager)
+    await this.repo.save(platformManager)
 
     return {
       platformManager,

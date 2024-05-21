@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { PlatformManager } from './platform-manager.entities'
-import { makePlatformManager } from '../../utils/factorie/make-platform-manager'
+import { makePlatformManager } from '../../utils/factories/make-platform-manager'
 import { SimpleName } from '../../shared/object-value/simple-name.value-object'
 import { Email } from '../../shared/object-value/email.object-value'
 

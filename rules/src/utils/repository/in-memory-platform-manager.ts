@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import { PlatformManager } from '../../platform-manager/model/platform-manager.entities'
 import { PlatformManagerRepository } from '../../platform-manager/provider/platform-manager-repository'
 
@@ -7,6 +8,8 @@ export class InMemoryPlatformManagerRepository
   readonly platformManagers: PlatformManager[] = []
 
   async create(platformManager: PlatformManager): Promise<void> {
+    platformManager = _.cloneDeep(platformManager)
+
     this.platformManagers.push(platformManager)
   }
 
@@ -14,10 +17,12 @@ export class InMemoryPlatformManagerRepository
     const user = this.platformManagers.find((manager) => {
       return manager.id === platformManagerId
     })
-    return user ?? null
+    return user ? _.cloneDeep(user) : null
   }
 
-  async update(platformManager: PlatformManager): Promise<void> {
+  async save(platformManager: PlatformManager): Promise<void> {
+    platformManager = _.cloneDeep(platformManager)
+
     const index = this.platformManagers.findIndex(
       ({ id }) => id === platformManager.id
     )

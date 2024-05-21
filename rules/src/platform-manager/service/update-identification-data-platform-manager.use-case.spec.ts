@@ -5,7 +5,7 @@ import { InMemoryPlatformManagerRepository } from '../../utils/repository/in-mem
 import { BcryptPasswordService } from '../../utils/service/bcrypt-password-service'
 import { UpdateIdentificationDataPlatformManager } from './update-identification-data-platform-manager.use-case'
 import { AppError } from '../../shared/error/app-error'
-import { makePlatformManager } from '../../utils/factorie/make-platform-manager'
+import { makePlatformManager } from '../../utils/factories/make-platform-manager'
 
 describe('Use case - update identification data platform manager', () => {
   it('should be able to update a identification data', async () => {
