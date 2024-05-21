@@ -24,6 +24,7 @@
 - CNPJ (único por entidade)
 - org (único por entidade)
 - dados de cobrança bancária
+  - nome do banco
   - agência
   - número da conta
   - tipo de conta (corrente, poupança, etc.)
@@ -31,11 +32,15 @@
 - data de atualização
 
 ### Casos de uso
-- [ ] Criar Empresa
+- [x] Criar Empresa
   - **Permissões**: Empresa
-- [ ] Atualizar dados da Empresa
+- [x] Atualizar dados da Empresa
   - **Permissões**: Empresa
-- [ ] Trocar senha
+- [x] Trocar senha
+  - **Permissões**: Empresa
+- [x] add dados de pagamento
+  - **Permissões**: Empresa
+- [x] remover dados de pagamento
   - **Permissões**: Empresa
 
 ## Admin
