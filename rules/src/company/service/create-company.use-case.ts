@@ -25,7 +25,7 @@ export class CreateCompany implements UseCase {
   ) {}
 
   async execute(input: CreateCompanyRequest): Promise<CreateCompanyResponse> {
-    const { name, email, password, cnpj, org } = input
+    const { name, email, password, cnpj } = input
 
     const passwordHash = await this.passwordServices.hash(password)
 
@@ -33,7 +33,6 @@ export class CreateCompany implements UseCase {
       name: new SimpleName(name),
       email: new Email(email),
       cnpj: new Cnpj(cnpj),
-      org: new SimpleName(org),
       password: passwordHash,
     })
 
