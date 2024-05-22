@@ -32,20 +32,17 @@ describe('Use case - update identification data company', () => {
     const newName = 'new name'
     const newEmail = 'newemail@email.test'
     const newCnpj = CNPJ.generate()
-    const newOrg = 'new org'
 
     await updateIdentification.execute({
       companyId: company.id,
       newEmail,
       newName,
       newCnpj,
-      newOrg,
     })
 
     expect(inMemoryRepository.companys[0].name).toEqual(newName)
     expect(inMemoryRepository.companys[0].email).toEqual(newEmail)
     expect(inMemoryRepository.companys[0].cnpj.value).toEqual(newCnpj)
-    expect(inMemoryRepository.companys[0].org).toEqual(newOrg)
   })
 
   it('should not be able to update identification data for a company that does not exist', async () => {
@@ -60,7 +57,6 @@ describe('Use case - update identification data company', () => {
     const newName = 'new name'
     const newEmail = 'newemail@email.test'
     const newCnpj = CNPJ.generate()
-    const newOrg = 'new org'
 
     expect(async () => {
       return await updateIdentification.execute({
@@ -68,7 +64,6 @@ describe('Use case - update identification data company', () => {
         newEmail,
         newName,
         newCnpj,
-        newOrg,
       })
     }).rejects.toThrowError(AppError)
   })

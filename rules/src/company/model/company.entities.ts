@@ -9,7 +9,6 @@ export interface CompanyProps {
   name: SimpleName
   email: Email
   cnpj: Cnpj
-  org: SimpleName
   bankData: BankData | null
   password: string
   createdAt: Date
@@ -20,7 +19,6 @@ interface ChangeIdentificationData {
   name: SimpleName
   email: Email
   cnpj: Cnpj
-  org: SimpleName
 }
 
 type ICompanyProps = Replace<
@@ -46,14 +44,13 @@ export class Company extends Entities {
   }
 
   changeIdentificationData(data: ChangeIdentificationData): void {
-    const { name, email, cnpj, org } = data
+    const { name, email, cnpj } = data
 
     this._props = {
       ...this._props,
       name,
       email,
       cnpj,
-      org,
     }
 
     this.update()
@@ -77,10 +74,6 @@ export class Company extends Entities {
 
   get cnpj(): Cnpj {
     return this._props.cnpj
-  }
-
-  get org(): string {
-    return this._props.org.value
   }
 
   get bankData(): BankData | null {

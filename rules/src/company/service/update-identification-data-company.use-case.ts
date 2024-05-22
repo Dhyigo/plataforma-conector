@@ -12,7 +12,6 @@ interface UpdateIdentificationDataRequest {
   newName: string
   newEmail: string
   newCnpj: string
-  newOrg: string
 }
 
 interface UpdateIdentificationDataResponse {
@@ -25,7 +24,7 @@ export class UpdateIdentificationDataCompany implements UseCase {
   async execute(
     input: UpdateIdentificationDataRequest
   ): Promise<UpdateIdentificationDataResponse> {
-    const { companyId, newName, newEmail, newCnpj, newOrg } = input
+    const { companyId, newName, newEmail, newCnpj } = input
 
     const company = await this.repo.findById(companyId)
 
@@ -40,7 +39,6 @@ export class UpdateIdentificationDataCompany implements UseCase {
       name: new SimpleName(newName),
       email: new Email(newEmail),
       cnpj: new Cnpj(newCnpj),
-      org: new SimpleName(newOrg),
     })
 
     await this.repo.save(company)

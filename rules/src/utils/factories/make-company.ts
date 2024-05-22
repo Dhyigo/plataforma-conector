@@ -8,13 +8,13 @@ type Override = Partial<CompanyProps>
 
 export function makeCompany(override: Override = {}): Company {
   const bankData = makeBankData()
+
   return new Company({
     name: new SimpleName('bank exemple'),
-    bankData: [bankData],
     cnpj: new Cnpj('02.701.325/0001-27'),
     email: new Email('test@test.test'),
-    org: new SimpleName('heads'),
     password: '1234456',
+    bankData,
     ...override,
   })
 }

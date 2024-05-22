@@ -37,13 +37,11 @@ describe('Entities - Company', () => {
       name: new SimpleName('New Name'),
       email: new Email('new@test.com'),
       cnpj: new Cnpj('89491823000170'),
-      org: new SimpleName('new org'),
     })
 
     expect(company.name).toEqual('New Name')
     expect(company.email).toEqual('new@test.com')
     expect(company.cnpj.value).toEqual('89491823000170')
-    expect(company.org).toEqual('new org')
     expect(company.updatedAt).not.toEqual(new Date('2022-06-12'))
   })
 
