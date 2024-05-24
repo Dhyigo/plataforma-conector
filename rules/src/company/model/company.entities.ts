@@ -15,11 +15,7 @@ export interface CompanyProps {
   updatedAt: Date
 }
 
-interface ChangeIdentificationData {
-  name: SimpleName
-  email: Email
-  cnpj: Cnpj
-}
+type ChangeIdentificationData = Pick<CompanyProps, 'name' | 'email' | 'cnpj'>
 
 type ICompanyProps = Replace<
   CompanyProps,

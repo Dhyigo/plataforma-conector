@@ -1,15 +1,21 @@
 import { StatusCodes } from 'http-status-codes'
 import { AppError } from '../../shared/error/app-error'
 import { UseCase } from '../../shared/interface/use-case'
-import { PlatformManager } from '../model/platform-manager.entities'
+import {
+  PlatformManager,
+  PlatformManagerProps,
+} from '../model/platform-manager.entities'
 import { PlatformManagerRepository } from '../provider/platform-manager-repository'
 import { Email } from '../../shared/object-value/email.object-value'
 import { SimpleName } from '../../shared/object-value/simple-name.value-object'
+import { Prefix } from '../../helpers/prefix'
+import { PickAndRecord } from '../../helpers/pick-and-record'
 
-interface UpdateIdentificationDataRequest {
+type UpdateIdentificationDataRequest = Prefix<
+  PickAndRecord<PlatformManagerProps, string, 'name' | 'email'>,
+  'new'
+> & {
   platformManagerId: string
-  newName: string
-  newEmail: string
 }
 
 interface UpdateIdentificationDataResponse {

@@ -3,16 +3,15 @@ import { PasswordServices } from '../../shared/interface/password-services'
 import { SimpleName } from '../../shared/object-value/simple-name.value-object'
 import { Email } from '../../shared/object-value/email.object-value'
 import { CompanyRepository } from '../provider/company-repository'
-import { Company } from '../model/company.entities'
+import { Company, CompanyProps } from '../model/company.entities'
 import { Cnpj } from '../model/cnpj.value-object'
+import { PickAndRecord } from '../../helpers/pick-and-record'
 
-interface CreateCompanyRequest {
-  name: string
-  email: string
-  password: string
-  cnpj: string
-  org: string
-}
+type CreateCompanyRequest = PickAndRecord<
+  CompanyProps,
+  string,
+  'name' | 'email' | 'password' | 'cnpj'
+>
 
 interface CreateCompanyResponse {
   company: Company

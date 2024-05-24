@@ -24,7 +24,6 @@ describe('Use case - add payment data', () => {
       email: 'test@test.test',
       password: '12345',
       cnpj: CNPJ.generate(),
-      org: 'heads',
     })
 
     await addPaymentDataCompany.execute({

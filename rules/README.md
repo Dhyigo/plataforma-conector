@@ -22,7 +22,6 @@
 - email
 - senha
 - CNPJ (único por entidade)
-- org (único por entidade)
 - dados de cobrança bancária
   - nome do banco
   - agência
@@ -48,10 +47,7 @@
 - nome
 - email (único por entidade)
 - senha
-- telefone (único por entidade)
-- CPF (único por entidade)
 - empresaId 
-- org
 - data de criação
 - data de atualização
 

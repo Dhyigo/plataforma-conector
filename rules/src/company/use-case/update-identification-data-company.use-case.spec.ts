@@ -26,7 +26,6 @@ describe('Use case - update identification data company', () => {
       email: 'test@test.test',
       password: '12345',
       cnpj: CNPJ.generate(),
-      org: 'heads',
     })
 
     const newName = 'new name'

@@ -15,7 +15,6 @@ describe('Use case - Create Company', () => {
     await createCompany.execute({
       name: 'name example',
       email: 'test@test.test',
-      org: 'heads',
       password: '12345',
       cnpj: CNPJ.generate(),
     })

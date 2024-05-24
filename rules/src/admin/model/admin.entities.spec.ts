@@ -3,17 +3,12 @@ import { SimpleName } from '../../shared/object-value/simple-name.value-object'
 import { Email } from '../../shared/object-value/email.object-value'
 import { makeAdmin } from '../../utils/factories/make-admin'
 import { Admin } from './admin.entities'
-import { CPF } from '../../utils/validator/CPF'
-import { Cpf } from '../../shared/object-value/cpf.value-object'
 
 describe('Entities - Admin', () => {
   it('should be able to create a Admin', () => {
-    const cpf = CPF.generate()
-
     const admin = new Admin({
       companyId: 'exemple-company-id',
       name: new SimpleName('Test name'),
-      cpf: new Cpf(cpf),
       email: new Email('test@test.test'),
       password: 'abcd',
     })
@@ -23,7 +18,6 @@ describe('Entities - Admin', () => {
       name: 'Test name',
       email: 'test@test.test',
       companyId: 'exemple-company-id',
-      cpf: { value: cpf },
       password: 'abcd',
     })
   })

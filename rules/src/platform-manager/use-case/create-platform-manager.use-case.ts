@@ -1,15 +1,19 @@
-import { PlatformManager } from '../model/platform-manager.entities'
+import {
+  PlatformManager,
+  PlatformManagerProps,
+} from '../model/platform-manager.entities'
 import { UseCase } from '../../shared/interface/use-case'
 import { PlatformManagerRepository } from '../provider/platform-manager-repository'
 import { PasswordServices } from '../../shared/interface/password-services'
 import { SimpleName } from '../../shared/object-value/simple-name.value-object'
 import { Email } from '../../shared/object-value/email.object-value'
+import { PickAndRecord } from '../../helpers/pick-and-record'
 
-interface CreatePlatformManagerRequest {
-  name: string
-  email: string
-  password: string
-}
+type CreatePlatformManagerRequest = PickAndRecord<
+  PlatformManagerProps,
+  string,
+  'name' | 'email' | 'password'
+>
 
 interface CreatePlatformManagerResponse {
   platformManager: PlatformManager

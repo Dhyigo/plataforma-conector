@@ -7,7 +7,7 @@
     "build": "tsc",
     "start": "node ./build/index.js",
     "dev": "ts-node-dev ./src/index.ts",
-    "test": "vitest",
+    "test": "tsc --noEmit && vitest",
     "test:platform-manager": "vitest related ./src/platform-manager/",
     "lint": "eslint ./src/*",
     "lint:fix": "npm run lint --fix"

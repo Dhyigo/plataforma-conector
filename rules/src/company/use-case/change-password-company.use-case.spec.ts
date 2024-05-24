@@ -24,7 +24,6 @@ describe('Use case - Change password Company', () => {
       email: 'test@test.test',
       password: '12345',
       cnpj: CNPJ.generate(),
-      org: 'heads',
     })
 
     const newPassword = 'abcde'
