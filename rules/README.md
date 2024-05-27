@@ -52,9 +52,9 @@
 - data de atualização
 
 ### Casos de uso
-- [ ] Criar Admin
+- [x] Criar Admin
   - **Permissões**: Empresa
-- [ ] Editar Admin
+- [x] Editar Admin
   - **Permissões**: Empresa
 - [ ] Apagar Admin
   - **Permissões**: Empresa
