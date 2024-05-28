@@ -18,5 +18,10 @@ describe('Use case - Create admin', () => {
     })
 
     expect(inMemoryRepository.admins[0]).instanceOf(Admin)
+    expect(inMemoryRepository.admins[0]).toMatchObject({
+      name: 'name example',
+      email: 'test@test.test',
+      companyId: 'exemple-company-id',
+    })
   })
 })
