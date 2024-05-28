@@ -60,7 +60,7 @@
   - **Permissões**: Empresa
 - [x] Listar Admins por empresa
   - **Permissões**: Empresa
-- [ ] Trocar senha
+- [x] Trocar senha
   - **Permissões**: Admin
 
 ## Integração
