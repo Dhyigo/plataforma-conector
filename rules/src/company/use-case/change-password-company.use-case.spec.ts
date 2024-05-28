@@ -9,7 +9,7 @@ import { makeCompany } from '../../utils/factories/make-company'
 import { CreateCompany } from './create-company.use-case'
 
 describe('Use case - Change password Company', () => {
-  it('should be able to create a company', async () => {
+  it('should be able to update a company password', async () => {
     const inMemoryRepository = new InMemoryCompanyRepository()
     const bcryptPassword = new BcryptPasswordService()
 
