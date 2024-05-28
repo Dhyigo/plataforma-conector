@@ -4,4 +4,5 @@ export interface AdminRepository {
   create(admin: Admin): Promise<void>
   findById(adminId: string): Promise<Admin | null>
   save(admin: Admin): Promise<void>
+  remove(adminId: string): Promise<void>
 }

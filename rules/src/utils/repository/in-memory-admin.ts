@@ -29,4 +29,11 @@ export class InMemoryAdminRepository implements AdminRepository {
 
     this.admins.splice(index, 1, admin)
   }
+
+  async remove(adminId: string): Promise<void> {
+    const index = this.admins.findIndex(({ id }) => id === adminId)
+    if (index !== -1) {
+      this.admins.splice(index, 1)
+    }
+  }
 }
