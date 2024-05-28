@@ -4,8 +4,8 @@ import { InMemoryAdminRepository } from '../../utils/repository/in-memory-admin'
 import { CreateAdmin } from './create-admin.use-case'
 import { Admin } from '../model/admin.entities'
 
-describe('Use case - Create platform manager', () => {
-  it('should be able to create a Platform manager', async () => {
+describe('Use case - Create admin', () => {
+  it('should be able to create a admin', async () => {
     const inMemoryRepository = new InMemoryAdminRepository()
     const bcryptPassword = new BcryptPasswordService()
 
