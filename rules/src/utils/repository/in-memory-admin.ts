@@ -36,4 +36,8 @@ export class InMemoryAdminRepository implements AdminRepository {
       this.admins.splice(index, 1)
     }
   }
+
+  async findByCompanyId(companyId: string): Promise<Admin[]> {
+    return this.admins.filter((admin) => admin.companyId === companyId)
+  }
 }

@@ -56,9 +56,9 @@
   - **Permissões**: Empresa
 - [x] Editar Admin
   - **Permissões**: Empresa
-- [ ] Apagar Admin
+- [x] Apagar Admin
   - **Permissões**: Empresa
-- [ ] Listar Admins por empresa
+- [x] Listar Admins por empresa
   - **Permissões**: Empresa
 - [ ] Trocar senha
   - **Permissões**: Admin
