@@ -1,5 +1,5 @@
 import { Replace } from '../../helpers/replace'
-import { Entities } from '../../shared/interface/entities'
+import { Entity, EntityTypes } from '../../shared/interface/entities'
 import { Email } from '../../shared/object-value/email.object-value'
 import { SimpleName } from '../../shared/object-value/simple-name.value-object'
 
@@ -14,14 +14,14 @@ export interface AdminProps {
 
 type IdentificationData = Pick<AdminProps, 'name' | 'email'>
 
-export class Admin extends Entities {
+export class Admin extends Entity {
   private _props: AdminProps
 
   constructor(
     props: Replace<AdminProps, { createdAt?: Date; updatedAt?: Date }>,
     id?: string
   ) {
-    super(id)
+    super(id, EntityTypes.Admin)
 
     this._props = {
       ...props,

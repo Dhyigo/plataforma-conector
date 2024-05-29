@@ -1,4 +1,4 @@
-import { Entities } from '../../shared/interface/entities'
+import { Entity, EntityTypes } from '../../shared/interface/entities'
 import { SimpleName } from '../../shared/object-value/simple-name.value-object'
 import { TextNumeric } from '../../shared/object-value/text-numeric.value-object'
 
@@ -9,11 +9,11 @@ export interface BankDataProps {
   accountNumber: TextNumeric
 }
 
-export class BankData extends Entities {
+export class BankData extends Entity {
   private readonly _props: BankDataProps
 
   constructor(props: BankDataProps, id?: string) {
-    super(id)
+    super(id, EntityTypes.Company)
     this._props = props
   }
 

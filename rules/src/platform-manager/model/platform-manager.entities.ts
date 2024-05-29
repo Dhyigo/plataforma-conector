@@ -1,11 +1,12 @@
 import { Replace } from '../../helpers/replace'
 import { Email } from '../../shared/object-value/email.object-value'
-import { Entities } from '../../shared/interface/entities'
+import { Entity, EntityTypes } from '../../shared/interface/entities'
 import { SimpleName } from '../../shared/object-value/simple-name.value-object'
 
 export interface PlatformManagerProps {
   name: SimpleName
   email: Email
+  type: 'platform-manager'
   password: string
   createdAt: Date
   updatedAt: Date
@@ -15,11 +16,12 @@ type IPlatformManagerProps = Replace<
   PlatformManagerProps,
   { createdAt?: Date; updatedAt?: Date }
 >
-export class PlatformManager extends Entities {
+export class PlatformManager extends Entity {
   private _props: PlatformManagerProps
 
   constructor(props: IPlatformManagerProps, id?: string) {
-    super(id)
+    super(id, EntityTypes.PlatformManager)
+
     this._props = {
       ...props,
       createdAt: props.createdAt ?? new Date(),

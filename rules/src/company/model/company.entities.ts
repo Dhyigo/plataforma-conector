@@ -1,6 +1,6 @@
 import { Replace } from '../../helpers/replace'
 import { Email } from '../../shared/object-value/email.object-value'
-import { Entities } from '../../shared/interface/entities'
+import { Entity } from '../../shared/interface/entities'
 import { SimpleName } from '../../shared/object-value/simple-name.value-object'
 import { Cnpj } from './cnpj.value-object'
 import { BankData } from './bank-data.entities'
@@ -21,7 +21,7 @@ type ICompanyProps = Replace<
   CompanyProps,
   { createdAt?: Date; updatedAt?: Date; bankData?: BankData | null }
 >
-export class Company extends Entities {
+export class Company extends Entity {
   private _props: CompanyProps
 
   constructor(props: ICompanyProps, id?: string) {
