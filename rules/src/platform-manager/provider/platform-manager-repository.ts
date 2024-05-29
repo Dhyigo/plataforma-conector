@@ -1,7 +1,7 @@
 import { PlatformManager } from '../model/platform-manager.entities'
 
-export interface PlatformManagerRepository {
-  create(platformManager: PlatformManager): Promise<void>
-  findById(platformManagerId: string): Promise<PlatformManager | null>
-  save(platformManager: PlatformManager): Promise<void>
+export abstract class PlatformManagerRepository {
+  abstract create(platformManager: PlatformManager): Promise<void>
+  abstract findById(platformManagerId: string): Promise<PlatformManager | null>
+  abstract save(platformManager: PlatformManager): Promise<void>
 }

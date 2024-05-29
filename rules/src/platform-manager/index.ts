@@ -1,0 +1,5 @@
+export * from './model/platform-manager.entities'
+export * from './provider/platform-manager-repository'
+export * from './use-case/create-platform-manager.use-case'
+export * from './use-case/change-password-platform-manager.use-case'
+export * from './use-case/update-identification-data-platform-manager.use-case'
