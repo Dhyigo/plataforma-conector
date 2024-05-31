@@ -1,9 +1,19 @@
 import { Module } from '@nestjs/common';
-import { PlatformManagerService } from './platform-manager.service';
-import { PlatformManagerController } from './platform-manager.controller';
+import { PlatformManagerController } from './http/controllers/platform-manager.controller';
+import { CreatePlatformManagerService } from './services/platform.service';
+import { PasswordServices } from 'rules';
+import { BcryptPasswordService } from 'src/shared/services/password/bcryptPassword.service';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
+  imports: [DatabaseModule],
   controllers: [PlatformManagerController],
-  providers: [PlatformManagerService],
+  providers: [
+    CreatePlatformManagerService,
+    {
+      provide: PasswordServices,
+      useClass: BcryptPasswordService,
+    },
+  ],
 })
 export class PlatformManagerModule {}

@@ -6,7 +6,6 @@ import { SimpleName } from '../../shared/object-value/simple-name.value-object'
 export interface PlatformManagerProps {
   name: SimpleName
   email: Email
-  type: 'platform-manager'
   password: string
   createdAt: Date
   updatedAt: Date
