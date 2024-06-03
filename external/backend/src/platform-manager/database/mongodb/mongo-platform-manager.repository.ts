@@ -53,13 +53,16 @@ export class MongoPlatformManagerRepository
         return null;
       }
 
-      return new PlatformManager({
-        name: new SimpleName(response.name),
-        email: new Email(response.email),
-        password: response.password,
-        createdAt: response.createdAt,
-        updatedAt: response.updatedAt,
-      });
+      return new PlatformManager(
+        {
+          name: new SimpleName(response.name),
+          email: new Email(response.email),
+          password: response.password,
+          createdAt: response.createdAt,
+          updatedAt: response.updatedAt,
+        },
+        response.id,
+      );
     } catch {
       throw new AppError({
         message: 'Gerente de plataforma não encontrado.',
@@ -69,15 +72,29 @@ export class MongoPlatformManagerRepository
   }
 
   async save(platformManager: PlatformManager): Promise<void> {
-    const query = mongoose.sanitizeFilter({
-      id: platformManager.id,
-    });
+    try {
+      const query = mongoose.sanitizeFilter({
+        id: platformManager.id,
+      });
 
-    await this.platformManagerModel.findOneAndUpdate(query, {
-      name: platformManager.name,
-      email: platformManager.email,
-      password: platformManager.password,
-      updatedAt: platformManager.updatedAt,
-    });
+      await this.platformManagerModel.findOneAndUpdate(query, {
+        name: platformManager.name,
+        email: platformManager.email,
+        password: platformManager.password,
+        updatedAt: platformManager.updatedAt,
+      });
+    } catch (e) {
+      if (e?.errorResponse?.code === DUPLICATE_KEY_ERROR) {
+        throw new AppError({
+          message: 'Já existe um gerente de plataforma com esse e-mail.',
+          statusCode: StatusCodes.CONFLICT,
+        });
+      }
+
+      throw new AppError({
+        message: 'Error interno ao atualizar os dados',
+        statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+      });
+    }
   }
 }

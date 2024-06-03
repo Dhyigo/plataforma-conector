@@ -23,11 +23,11 @@ export class SimpleName {
 
     const name = value.trim()
 
-    const hasEspecialChar = !/^[a-zA-ZÀ-ÿ\s']*$/.test(name)
+    const hasEspecialCharOrNumber = !/^[a-zA-ZÀ-ÿ\s']*$/.test(name)
 
-    if (hasEspecialChar) {
+    if (hasEspecialCharOrNumber) {
       throw new AppError({
-        message: `${field} não deve conter caracteres especiais.`,
+        message: `${field} deve conter apenas letras.`,
         statusCode: StatusCodes.BAD_REQUEST,
       })
     }
