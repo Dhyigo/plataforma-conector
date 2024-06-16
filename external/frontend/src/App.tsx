@@ -1,3 +1,10 @@
+import { Dashboard } from './page/dashboard'
+import './global-style.css'
+
 export function App() {
-  return <h1>Olá, mundo</h1>
+  return (
+    <>
+      <Dashboard />
+    </>
+  )
 }

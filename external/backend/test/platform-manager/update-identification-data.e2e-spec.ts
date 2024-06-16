@@ -5,8 +5,9 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AppModule } from 'src/app.module';
 import { validationPipeConfig } from 'src/config/validation-pipe.config';
 import mongoose from 'mongoose';
+import { PlatformManagerSchema } from 'src/platform-manager/database/mongodb/platform-manager.schema';
 
-describe('Request - Create a Platform manager', () => {
+describe('Request - Update identification data a Platform manager', () => {
   let app: INestApplication;
   let mongoServer: MongoMemoryServer;
 
@@ -27,20 +28,25 @@ describe('Request - Create a Platform manager', () => {
     await app.init();
   });
 
-  it('should be able to create a platform manager', async () => {
-    const res = await request(app.getHttpServer())
-      .post('/platform-manager')
+  it('should be able to update a identification data platform manager', async () => {
+    const createRes = await request(app.getHttpServer())
+      .post('/platform-manager/')
       .send({
         name: 'Test platform manager',
         email: 'test@example.com',
         password: 'password123',
       });
-    expect(res.statusCode).toBe(HttpStatus.CREATED);
 
-    expect(res.body).toHaveProperty('platformManager');
-    expect(res.body.platformManager).toHaveProperty('id');
-    expect(res.body.platformManager.name).toEqual('Test platform manager');
-    expect(res.body.platformManager.email).toEqual('test@example.com');
+    // dados-de-identificacao
+
+    await request(app.getHttpServer())
+      .patch(
+        `/platform-manager/dados-de-identificacao/${createRes.body.platformManager.id}`,
+      )
+      .send({
+        name: 'new name',
+        email: 'new@example.com',
+      });
   });
 
   it('should not create a platform manager with a duplicate email address', async () => {

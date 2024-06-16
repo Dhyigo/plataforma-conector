@@ -27,13 +27,12 @@ export class PlatformManagerController {
     };
   }
 
-  @Patch(':id')
+  @Patch('/dados-de-identificacao/:id')
   async updateIdentificationData(
     @Body() updateIdentificationDataDto: UpdateIdentificationDataDto,
     @Param('id') platformManagerId: string,
   ) {
     const { name, email } = updateIdentificationDataDto;
-    console.log(updateIdentificationDataDto);
 
     const { platformManager } =
       await this.updateIdentificationDataService.execute({
