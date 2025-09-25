@@ -1,0 +1,17 @@
+export const data = [
+  { mes: 'Jan', trefego: 1563 },
+  { mes: 'Fev', trefego: 1247 },
+  { mes: 'Mar', trefego: 1894 },
+  { mes: 'Abr', trefego: 1765 },
+  { mes: 'Mai', trefego: 1612 },
+  { mes: 'Jun', trefego: 1145 },
+  { mes: 'Jul', trefego: 1329 },
+  { mes: 'Ago', trefego: 1542 },
+  { mes: 'Set', trefego: 1987 },
+  { mes: 'Out', trefego: 1734 },
+  { mes: 'Out', trefego: 1734 },
+  { mes: 'Out', trefego: 1734 },
+  { mes: 'Out', trefego: 1734 },
+  { mes: 'Out', trefego: 1734 },
+  { mes: 'Out', trefego: 1734 },
+]

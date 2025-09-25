@@ -5,9 +5,15 @@ import { UseCase } from '../../shared/interface/use-case'
 import { Admin } from '../model/admin.entities'
 import { AdminRepository } from '../provider/admin-repository'
 
+enum Status {
+  SUCCESS = 'success',
+  FAIL = 'fail',
+}
+
 interface ChangePasswordAdminRequest {
   adminId: string
   newPassword: string
+  status: 'cancelado' | 'pendente'
 }
 
 interface ChangePasswordAdminResponse {
