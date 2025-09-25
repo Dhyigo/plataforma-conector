@@ -5,7 +5,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AppModule } from 'src/app.module';
 import { validationPipeConfig } from 'src/config/validation-pipe.config';
 import mongoose from 'mongoose';
-import { PlatformManagerSchema } from 'src/platform-manager/database/mongodb/platform-manager.schema';
+import { PlatformManagerSchema } from 'src/platform-manager/database/mongodb/ticket.schema';
 
 describe('Request - Update identification data a Platform manager', () => {
   let app: INestApplication;

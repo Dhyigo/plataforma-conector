@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PlatformManager, PlatformManagerRepository } from 'rules';
-import { MongoPlatformManagerRepository } from './mongodb/mongo-platform-manager.repository';
-import { PlatformManagerSchema } from './mongodb/platform-manager.schema';
+import { MongoPlatformManagerRepository } from './mongodb/mongo-ticket.repository';
+import { PlatformManagerSchema } from './mongodb/ticket.schema';
 
 @Module({
   imports: [
